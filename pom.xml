@@ -233,6 +233,7 @@
 				</dependencies>
 			</plugin>
 		</plugins>
+		<!-- idea中maven不会编译mapper。xml文件  所以添加这个让maven编译xml文件-->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
