@@ -8,20 +8,14 @@ import java.util.Arrays;
 public class SortedUtils {
 
     /**
-     * 插入排序
+     * 插入排序 本质上 是将未排序的元素插入到已经排序的元素当中去   且只能交换相连的元素
      * @param arr
      * @return
      */
     public static  Comparable[] insertSort(Comparable[] arr){
         for (int i = 1; i < arr.length; i++) {
-            for (int j = i-1; j >=0 ; j--) {
-                if((j>0&&less(arr[i],arr[j])&&less(arr[j-1],arr[i]))||(j==0&&less(arr[i],arr[j]))) {
-                    Comparable temp = arr[i];
-                    for (int k = i; k > j; k--) {
-                        arr[k] = arr[k - 1];
-                    }
-                    arr[j] = temp;
-                }
+            for(int j=i;j>0&&less(arr[j],arr[j-1]);j--){
+                exch(arr,j,j-1);
             }
         }
         return arr;
@@ -73,6 +67,21 @@ public class SortedUtils {
      */
     public static boolean less(Comparable a,Comparable b){
         return a.compareTo(b)<=0;
+    }
+
+    /**
+     * 交换comparable a中i和j元素的位置
+     * @param a
+     * @param i
+     * @param j
+     * @return
+     */
+    public static Comparable[] exch(Comparable[] a,int i,int j){
+        Comparable temp=a[j];
+        a[j]=a[i];
+        a[i]=temp;
+        return a;
+
     }
 
     public static void main(String[] args) {
