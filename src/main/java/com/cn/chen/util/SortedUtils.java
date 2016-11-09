@@ -34,11 +34,11 @@ public class SortedUtils {
      * @param arr
      * @return
      */
-    public static int[] sectionSort(int[] arr){
+    public static Comparable[] sectionSort(Comparable[] arr){
         for (int i = 0; i < arr.length; i++) {
             int j=getMin(arr,i);
             //交换i+1和j;
-            int temp=arr[j];
+            Comparable temp=arr[j];
             arr[j]=arr[i];
             arr[i]=temp;
         }
@@ -48,16 +48,16 @@ public class SortedUtils {
 
 
     /**
-     * 从第i个元素开始在数组中选取最小的元素
+     * 从第i个元素开始在数组中选取最小的元素index
      * @param arr
      * @param i
      * @return
      */
-    public static int getMin(int[] arr,int i){
-        int min =arr[i];
+    public static int getMin(Comparable[] arr,int i){
+        Comparable min =arr[i];
         int j=i;
         for ( ;i <arr.length ;i ++) {
-            if(min>arr[i]){
+            if(!less(min,arr[i])){
                 min=arr[i];
                 j=i;
             }
